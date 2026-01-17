@@ -1,0 +1,964 @@
+/*@media screen and (max-width: 768px){/*スマホサイズに適用*/
+html {
+  scroll-behavior: smooth;
+}
+
+@media screen and (min-width: 961px) {
+  .content {
+    min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+    position: relative; /* ←相対位置 */
+    padding-bottom: 300px; /* ←フッターの高さを指定 */
+    box-sizing: border-box;
+    /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
+  }
+
+  /*mainのz-indexが1なので, headerは2に設定*/
+  header {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 75px;
+    background-color: #d2212100;
+    background-image: linear-gradient(
+      0deg,
+      rgba(1, 2, 15, 0) 0%,
+      rgba(1, 2, 15, 0.25) 25%,
+      rgba(1, 2, 15, 0.5) 50%,
+      rgba(1, 2, 15, 0.75) 75%,
+      rgb(1, 2, 15) 100%
+    );
+    overflow: hidden;
+  }
+  .header_container {
+    position: relative;
+    width: 1700px;
+    height: auto;
+    margin: auto;
+    background-color: #df1f1f00;
+  }
+  div .header-logo {
+    position: relative;
+    display: flex;
+    width: 150px;
+    height: 100px;
+    top: 5px;
+    background-color: #ff951300;
+  }
+  div .header-logo a {
+    transition: all 0.5s;
+  }
+
+  div .nav_wrapper ul {
+    position: fixed;
+    display: flex;
+    top: 15px;
+    right: 0px;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    padding: 10px;
+    list-style-type: none;
+    background-color: #92a61e00;
+  }
+  div .nav_wrapper ul li {
+    margin: 5px;
+    font-family: "Helvetica", sans-serif;
+  }
+  div .nav_wrapper ul li a {
+    color: #bbf3ebde;
+    opacity: 80%;
+    padding: 10px;
+    transition: all 0.5s;
+    background-color: #00000000;
+  }
+  div .nav_wrapper ul li a:hover {
+    color: #92fff6;
+    transition: 0.5s;
+    opacity: 100%;
+  }
+
+  div .nav_btmline li a {
+    /*線の基点とするためrelativeを指定*/
+    position: relative;
+  }
+
+  div .nav_btmline li.current a,
+  div .nav_btmline li a:hover {
+    color: #017e7e;
+  }
+
+  div .nav_btmline li a::after {
+    content: "";
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    /*線の形状*/
+    width: 80%;
+    height: 1px;
+    background: #92fff6;
+    /*アニメーションの指定*/
+    transition: all 0.3s;
+    transform: scale(0, 1); /*X方向0、Y方向1*/
+    transform-origin: left top; /*左上基点*/
+  }
+
+  /*現在地とhoverの設定*/
+  div .nav_btmline li.current a::after,
+  div .nav_btmline li a:hover::after {
+    transform: scale(1, 1); /*X方向にスケール拡大*/
+  }
+
+  /*検索窓のエリア*/
+  div #search-wrapper {
+    position: fixed;
+    display: none;
+    width: 250px;
+    height: 40px;
+    top: 20px;
+    right: 20px;
+    background-color: #08975b00;
+  }
+  /*テキスト入力input設定*/
+  div #search-text {
+    width: 40px; /*テキスト入力エリアが伸びる前の横幅*/
+    height: 40px;
+    padding: 5px;
+    border: none;
+    background: rgba(110, 0, 101, 0) url("../images/icon/search.svg") no-repeat
+      11px center; /*虫眼鏡アイコンを背景に表示*/
+    background-size: 16px 16px;
+    color: #aafcfcc2;
+    transition: all 0.5s; /*transitionを使ってスムースに伸ばす*/
+    outline: none;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer; /*カーソルを指マークに*/
+  }
+  /*テキスト入力inputにフォーカスした時の形状*/
+  div #search-text:focus {
+    width: 220px; /*テキスト入力エリアが伸びる後の横幅*/
+    padding: 20px 0 20px 60px;
+    box-shadow: 0 2px rgba(6, 0, 1, 0.26);
+  }
+  div #search-text::placeholder {
+    background-color: #00000000;
+  }
+
+  div .rightside-marker {
+    position: absolute;
+    width: auto;
+    margin: 0px;
+    bottom: 50vh;
+    right: 5%;
+    z-index: 1;
+    scroll-behavior: smooth;
+  }
+  div .rightside-marker ul {
+    position: fixed;
+    width: auto;
+    height: auto;
+    top: 30%;
+    right: 20px;
+    font-size: 50px;
+    list-style-type: none;
+    background-color: #e9171700;
+  }
+  div .rightside-marker li {
+    margin: 20px;
+    background-color: #e9e61700;
+  }
+  div .rightside-marker li a {
+    color: #009771a4;
+  }
+  div .rightside-marker li a:hover {
+    color: #fd2d2ddc;
+  }
+
+  /*mainのz-indexは1なので, headerと同じく2に設定*/
+  footer {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    bottom: 0;
+    background-color: #011314;
+    border-top: 1px rgba(0, 139, 125, 0.779) solid;
+    opacity: 100%;
+  }
+  footer a {
+    color: rgba(91, 179, 191, 0.567);
+  }
+
+  div.breadcrumb ol {
+    width: 1800px;
+    margin: 10px auto;
+    padding-top: 40px;
+    text-align: left;
+    font-size: 20px;
+    letter-spacing: 1px;
+    background-color: #8d060600;
+    padding: 10px;
+    list-style: none;
+    color: #80808078;
+  }
+
+  div.breadcrumb li {
+    display: inline;
+  }
+
+  div.breadcrumb li + li::before {
+    display: inline-block;
+    height: 5px;
+    content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0yLjUgMEwxIDEuNSAzLjUgNCAxIDYuNSAyLjUgOGw0LTQtNC00eiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+);
+  }
+  div.breadcrumb [aria-current="page"] {
+    color: rgba(98, 112, 110, 0.541);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .foot_container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 1800px;
+    height: 350px;
+    margin: auto;
+    padding: 10px;
+    justify-items: center;
+    background-color: #c42a2a00;
+  }
+  .pagetop_btn {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 100%;
+    margin: 5px auto;
+    padding: 20px;
+    background-color: #92ac1d00;
+    justify-items: center;
+    align-items: center;
+  }
+  .page_top {
+    position: relative;
+    display: flex;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    background-color: #4e75716f;
+    border: solid 2px #000;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+  }
+  .pagetop_arrow {
+    height: 50px;
+    width: 50px;
+    border-top: 3px solid #000;
+    border-right: 3px solid #000;
+    transform: translateY(20%) rotate(-45deg);
+  }
+  .page_top:hover {
+    background-color: #0d9e90;
+    border: solid 2px #03ffa3;
+    border-radius: 50%;
+    transition: all 0.5s;
+  }
+
+  .nav_map {
+    position: relative;
+    width: 300px;
+    height: 100%;
+    margin: auto;
+    padding: 10px;
+    background-color: #431cde00;
+  }
+  .foot_ctg {
+    display: block;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-between;
+    font-size: 24px;
+    letter-spacing: 1px;
+    list-style: none;
+  }
+  .foot_ctg li {
+    padding: 5px;
+  }
+  .something {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+  }
+  .SNS_wrapper {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 350px;
+    margin: 5px auto;
+    padding: 5px;
+    justify-content: center;
+    align-content: flex-end;
+    background-color: #91812800;
+  }
+  .SNS_text {
+    width: 500px;
+    height: auto;
+    margin: 5px auto;
+    padding: 5px;
+    text-align: left;
+    letter-spacing: 2px;
+    font-size: 16px;
+    background-color: #14470800;
+  }
+  .SNS_icon {
+    position: relative;
+    display: flex;
+    margin: 5px auto;
+    justify-content: center;
+    align-items: center;
+    background-color: #e90a9400;
+    opacity: 30%;
+  }
+  .SNS_icon a {
+    transition: all 0.5s;
+  }
+  .SNS_icon a:hover {
+    opacity: 100%;
+    transition: all 0.5s;
+  }
+
+  .SNS_icon img {
+    width: 50px;
+    height: auto;
+    margin: 5px auto;
+    padding: 5px;
+  }
+
+  .copyright {
+    position: relative;
+    display: flex;
+    width: 400px;
+    margin: 20px auto;
+    padding: 5px;
+    left: 750px;
+    background-color: #00000000;
+  }
+}
+/*/////スマートフォン版/////*/
+@media (max-width: 960px) {
+  .content {
+    min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+    position: relative; /* ←相対位置 */
+    box-sizing: border-box;
+    /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
+  }
+  header {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    top: -5px;
+    background-color: #1dd3ef00;
+    background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.1) 25%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 6, 6, 0.7) 75%,
+      rgb(0, 0, 0) 100%
+    );
+    overflow: hidden;
+  }
+  .header_container {
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    margin: auto;
+    background-color: #89bfe500;
+  }
+  /*このレスポンシブではへーダーのロゴは削除*/
+  div .header-logo {
+    position: relative;
+    display: none;
+    width: 150px;
+    height: 40px;
+    margin: auto;
+    padding: 0;
+    background-color: #918f19;
+    transform: translateX(0);
+    transition: all 0.2s;
+  }
+  .header-logo.active {
+    transform: translateX(0);
+  }
+
+  /*ヘッダーにハンバーガーボタンを追加*/
+  div .hamburger {
+    position: fixed;
+    display: flex;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    top: 20px;
+    right: 30px;
+    background-color: #00000000;
+  }
+
+  div .hamburger span {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(234, 216, 216);
+    transition: 0.5s;
+  }
+  div .hamburger:hover {
+    background-color: #ff188b00;
+    transition: 0.5s;
+  }
+  div .hamburger span:first-of-type {
+    /* ハンバーガーメニューの1番目の線 */
+    top: 0;
+  }
+  div .hamburger span:nth-of-type(2) {
+    /* ハンバーガーメニューの2番目の線 */
+    top: 50%;
+  }
+  div .hamburger span:last-of-type {
+    /* ハンバーガーメニューの3番目の線 */
+    top: 100%;
+  }
+
+  div .hamburger.active span:first-of-type {
+    /* ハンバーガーメニューの1番目の線 */
+    top: 50%;
+    transform: rotate(45deg);
+    transition: 0.5s;
+  }
+  div .hamburger.active span:nth-of-type(2) {
+    /* ハンバーガーメニューの2番目の線 */
+    opacity: 0; /* 透明にする */
+  }
+  div .hamburger.active span:last-of-type {
+    /* ハンバーガーメニューの3番目の線 */
+    top: 50%;
+    transform: rotate(-45deg);
+    transition: 0.5s;
+  }
+
+  .nav_menu {
+    position: fixed;
+    list-style: none;
+    width: 50%;
+    height: 100%;
+    margin: 0px;
+    padding: 10px;
+    top: 0px;
+    align-items: start;
+    background-color: #000000e2;
+    transform: translateX(-100%);
+    transition: all 0.2s;
+  }
+  .nav_menu li {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    line-height: 250%;
+    text-align: left;
+    background-color: #d4ff2a00;
+  }
+  .nav_menu.active {
+    transform: translateX(0);
+  }
+
+  div .nav_menu li a {
+    position: relative;
+    opacity: 80%;
+    padding: 10px;
+    transition: all 0.5s;
+  }
+  div .nav_menu li a:hover {
+    color: #92fff6;
+    transition: 0.5s;
+    opacity: 100%;
+  }
+
+  div #search-wrapper {
+    position: fixed;
+    display: none;
+    width: 250px;
+    height: 40px;
+    top: 20px;
+    right: 20px;
+    background-color: #08975b00;
+  }
+
+  .rightside-marker {
+    position: relative;
+    display: none;
+  }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 360px;
+    padding: 10px;
+    background-color: rgb(0, 24, 21);
+    opacity: 99%;
+  }
+  footer a {
+    color: rgba(91, 179, 191, 0.567);
+  }
+
+  div.breadcrumb ol {
+    width: 100%;
+    margin: 0px auto;
+    padding-top: 40px;
+    text-align: left;
+    font-size: 20px;
+    letter-spacing: 1px;
+    background-color: #8d060600;
+    padding: 10px;
+    list-style: none;
+    color: #80808078;
+  }
+
+  div.breadcrumb li {
+    display: inline;
+  }
+
+  div.breadcrumb li + li::before {
+    display: inline-block;
+    height: 5px;
+    content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0yLjUgMEwxIDEuNSAzLjUgNCAxIDYuNSAyLjUgOGw0LTQtNC00eiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+);
+  }
+
+  div.breadcrumb [aria-current="page"] {
+    color: rgba(98, 112, 110, 0.541);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .foot_container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    padding: 10px;
+    background-color: #c42a2a00;
+  }
+
+  .pagetop_btn {
+    position: relative;
+    display: flex;
+    width: 100px;
+    height: 100%;
+    margin: 5px auto;
+    padding: 10px;
+    padding-top: 50px;
+    background-color: #92ac1d00;
+    justify-items: center;
+    align-items: center;
+  }
+  .page_top {
+    position: relative;
+    display: flex;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    background-color: #4e75716f;
+    border: solid 2px #000;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+  }
+  .pagetop_arrow {
+    height: 30px;
+    width: 30px;
+    border-top: 3px solid #000;
+    border-right: 3px solid #000;
+    transform: translateY(20%) rotate(-45deg);
+  }
+  .page_top:hover {
+    background-color: #0d9e90;
+    border: solid 2px #03ffa3;
+    border-radius: 50%;
+    transition: all 0.5s;
+  }
+
+  .nav_map {
+    position: relative;
+    width: 200px;
+    margin: auto;
+    padding: 5px;
+    background-color: #431cde00;
+  }
+  .foot_ctg {
+    display: block;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    list-style: none;
+  }
+  .something {
+    width: 100px;
+    height: auto;
+    margin: auto;
+  }
+
+  div .SNS_wrapper {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 250px;
+    margin: 5px auto;
+    padding: 10px;
+    left: -80px;
+    justify-content: space-around;
+    background-color: #318d0600;
+  }
+  div .SNS_text {
+    width: 100px;
+    margin: 5px auto;
+    padding: 5px;
+    text-align: left;
+    font-size: 16px;
+    background-color: #00000000;
+  }
+  div .SNS_icon {
+    position: relative;
+    display: flex;
+    margin: 5px auto;
+    justify-content: center;
+    background-color: #e90a9400;
+  }
+  div .SNS_icon img {
+    width: 20px;
+    height: 20px;
+    margin: 5px auto;
+    padding: 5px;
+  }
+  div .SNS_icon img a {
+    transition: all 0.5s;
+  }
+  div .SNS_icon img a:hover {
+    opacity: 50%;
+    transition: all 0.5s;
+  }
+  div .copyright {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    background-color: #00000000;
+  }
+}
+/*文字列の手前に>を追加するための設定
+        nav ul li.has-child::before{
+            content:'';
+            position: absolute;
+            right: 230px;
+            top: 14px;
+            width:8px;
+            height:8px;
+            border-top: 2px solid rgb(252, 252, 252);
+            border-right:2px solid rgb(255, 255, 255);
+            transform: rotate(45deg);
+        }
+        nav ul li.has-subchild::before{/*>
+            content:'';
+            position: absolute;
+            display: flex;
+            align-items: center;
+            right: 200px;
+            top: 183px;
+            /*矢印の形
+            width:8px;
+            height:8px;
+            border-top: 2px solid rgb(252, 252, 252);
+            border-right:2px solid rgb(255, 255, 255);
+            transform: rotate(45deg);
+        }
+    
+    
+        
+        /*サブメニュー
+        nav ul li .submenu{
+            /*絶対配置で位置を指定
+            position: absolute;
+            z-index: 300;
+            padding: 0px;
+            top: 0px;
+            left: 100%;/*左に揃える
+            /*形状を指定
+            width: 90%;
+            height: 100vh;
+            background-color:#082227d5;
+            /*はじめは非表示
+            visibility:hidden;
+            opacity: 0;
+            /*アニメーション設定
+            transition: all .3s;
+        }
+        nav ul li ul li{
+            text-align: left;
+        }
+        /*サブメニューのリンク
+        nav ul li ul li a{
+            position: relative;
+            display: flex;
+            left: 0px;
+            text-decoration: none;
+            font-size: 15px;
+            color: rgb(206, 201, 201);
+            padding: 10px 0px;
+            background-color: #396a86ad;
+            transition:all .3s;
+        }
+        nav li.has-child ul li a:hover,
+        nav li.has-child ul li a:active{
+            background:rgb(120, 141, 4);
+        }
+        /*ライブラリーの各サブメニューだけ色を変化
+        .submenu-item:nth-child(1) a:hover{
+            background-color: rgb(175, 72, 120);
+        }
+        .submenu-item:nth-child(2) a:hover{
+            background-color: rgb(175, 72, 120);
+        }
+        .submenu-item:nth-child(3) a:hover{
+            background-color: rgb(175, 72, 120);
+        }
+        .submenu-item:nth-child(4) a:hover{
+            background-color: rgb(175, 72, 120);
+        }*/
+
+/*サブサブメニュー
+        nav ul li ul li .subsubmenu{
+            /*絶対配置で位置を指定
+            position: absolute;
+            top: 0;
+            left: 100%;
+            z-index: 300;
+            /*形状を指定
+            width: 90%;
+            height: auto;
+            margin: 0;
+            padding: 0px;
+            background-color:#082227d5;
+            /*はじめは非表示
+            visibility:hidden;
+            opacity: 0;
+            /*アニメーション設定
+            transition: all .3s;
+        }
+        /*サブサブメニューのリンク
+        nav ul li ul li ul li a{/*subsubmenu link
+            position: relative;
+            display: flex;
+            left: 0px;
+            text-decoration: none;
+            font-size: 15px;
+            color: rgb(167, 167, 167);
+            padding: 10px 30px 10px;
+            background-color: #2747a0a9;
+            transition:all .3s;
+        
+        }
+        nav li.has-child ul li ul li a:hover,
+        nav li.has-child ul li ul li a:active{
+            background:rgba(131, 133, 18, 0.952);
+        }
+    
+        /*hoverしたら表示
+        nav li.has-child:hover > ul,
+        nav li.has-child ul li.has-subchild:hover > ul{
+            visibility: visible;
+            opacity: 1;
+        }
+    
+            /*==============================3層目===============================*/
+
+/*---------------------------------------------------------------------------------------------*/
+
+/*サイドボタンの設定
+        div.area-side{
+            position: absolute;
+            z-index: 200;
+            margin-top: 50%;
+            margin-left: 0px;
+            width: 100px;
+            height: 250px;
+            list-style: none;
+            background-color:#0c1d2c00;
+            display: block;
+        }
+        div.area-side ul{
+            list-style: none;
+        }
+        div.area-side ul::-webkit-scrollbar{
+            display: none;
+        }
+        div.area-side ul li a{
+            font-size: 40px;
+            list-style: none;
+            padding: 0;
+            margin: 10px 0px;
+            flex-flow: column nowrap;
+            color: rgb(19, 136, 101);
+        }
+        div.area-side ul li a:hover{
+            color: rgb(197, 34, 116);
+            transition: all .5s;
+    }
+        nav{
+            position: relative;
+            z-index: 300;
+            letter-spacing: 1px;
+        }
+        /*ナビゲーションを横並びに
+        nav ul{
+            background-color: #811e0c00;
+            margin: 10px;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+        }
+        /*下の階層のulや矢印の基点にするためliにrelativeを指定
+        nav ul li{
+            position: relative;
+            display: inline-block;
+            padding: 0px;
+        }
+        nav ul li a{/*menu links
+            display: flex;/*フレックス(インライン要素が移動可能)によってalignやjustifyによって場所を指定できる
+            text-decoration: none;
+            color: rgb(209, 209, 209);
+            padding: 2px 5px;
+            margin: 5px;
+            height: 40px;
+            width: auto;
+            text-align: center;/*横方向文字の中央ぞろえ
+            align-items: center;/*縦方向の中央ぞろえ
+            background-color:#30a19bd3;
+            transition:all .3s;
+        }
+        nav ul li a:hover{
+            color:rgb(143, 44, 44);
+            background-color:#033531af;
+        }
+        /*2階層目以降は横並びにしない
+        nav ul ul{
+            display: block;/*改行されるブロック要素を設定
+        }
+    
+    
+        nav ul li li a{/*submenu links
+            padding: 0px;
+            background-color: #869244af;
+            text-align: left;
+            font-size: 15px;
+        }
+        
+        /*==矢印の設定*/
+/*2階層目を持つliの矢印の設定
+        nav ul li.has-child::before{ /*>
+            content:'';
+            position: absolute;
+            left: 45%;
+            top: 30px;
+            width: 6px;
+            height: 6px;
+            border-top: 2px solid #999;
+            border-right: 2px solid #999;
+            transform: rotate(135deg);
+        }
+        /*3階層目を持つliの矢印の設定
+        nav ul ul li.has-child::before{/*>
+            content:'';
+            position: absolute;
+            left:6px;
+            top:17px;
+            width:6px;
+            height:6px;
+            border-top: 2px solid #fff;
+            border-right:2px solid #fff;
+            transform: rotate(45deg);
+        }
+        
+        /*== 2・3階層目の共通設定 */
+
+/*下の階層を持っているulの指定
+        nav li.has-child .submenu{
+            /*絶対配置で位置を指定
+            position: absolute;
+            z-index: 200;
+            flex-flow: column nowrap;
+            color: #23978eaf;
+            top: 30px;
+            left: 0%;
+            
+            
+            padding: 0px 0px;
+            margin: 0px;
+            /*形状を指定
+            width:00%;
+            background:#2a437a94;
+            
+            /*はじめは非表示*/
+/*visibility: hidden;
+            opacity: 0;
+            /*アニメーション設定
+            transition: all .3s;
+        }
+        nav li.has-child .subsubmenu{
+            /*絶対配置で位置を指定
+            position: absolute;
+            left: 100%;
+            top: 0px;
+            z-index: 4;
+            padding: 0px 0px;
+           ;
+            /*形状を指定
+            background:#282729e0;
+            width:100%;
+            /*はじめは非表示*/
+/*visibility: hidden;
+            opacity: 0;
+            /*アニメーション設定
+            transition: all .3s;
+        }
+        
+        /*hoverしたら表示
+        nav li.has-child:hover > ul,
+        nav li.has-child ul li:hover > ul,
+        nav li.has-child:active > ul,
+        nav li.has-child ul li:active > ul{
+          visibility: visible;
+          opacity: 1;
+        }
+        nav li.has-child ul li a:hover,
+        nav li.has-child ul li a:active{
+            background:#6e2222;
+        }
+        /*==3階層目*/
+
+/*3階層目の位置
+        nav li.has-child ul ul{
+            position: absolute;
+            z-index: 200;
+    
+            top:0;
+            left:100%;
+            background:#224c75;
+        }
+        
+        nav li.has-child ul ul li a:hover,
+        nav li.has-child ul ul li a:active{
+            background:#4d81b3;
+        }
+    }
+    */

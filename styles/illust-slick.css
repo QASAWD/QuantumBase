@@ -1,0 +1,30 @@
+/*==================================================
+スライダーのためのcss
+===================================*/
+.illust_slider {
+    position: relative;
+    z-index: 10;
+    /*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+    padding-left: 0;
+    list-style-type: none;
+    background-color: rgba(21, 92, 77, 0.384);
+}
+
+.illust_slider li {
+    display: inline-block;
+}
+
+.illust_slider .view{
+    margin: 10px 10px;
+    padding: 0px;
+    width: 400px;
+    height: 300px;
+ }
+
+
+
+/*slickのJSで書かれるタグ内、スライド左右の余白調整*/
+
+.illust_slider .slick-slide {
+    margin: 0px 0px;/*スライド左右の余白調整*/
+}

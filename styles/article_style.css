@@ -1,0 +1,12 @@
+body .manu_container {
+  overflow-x: hidden;
+  overflow-y: visible;
+  position: relative;
+  margin: 10px auto;
+  padding: 30px;
+  background-color: rgba(34, 34, 34, 0.807);
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}

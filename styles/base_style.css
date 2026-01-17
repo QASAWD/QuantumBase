@@ -1,1 +1,1377 @@
+/**/
+html {
+  /*下地*/
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  color: rgb(197, 197, 197);
+  background-color: #000000;
+}
 
+body {
+  background-color: #2002ff00;
+  font-family: "Arial", "Helvetica", sans-serif;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /*scrollbar-width: none;*/
+}
+/*
+body::-webkit-scrollbar {
+  display: none;
+}*/
+body a {
+  /*body内のリンク*/
+  color: #02c490;
+  text-decoration: none;
+  transition: 0.5s;
+}
+body a:hover {
+  color: #a0fbf8;
+  transition: 0.5s;
+}
+
+/*スクロールバーを消す場合
+body::-webkit-scrollbar {
+  display: none;
+}*/
+
+main {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  min-width: 400px;
+  background: rgba(119, 0, 0, 0);
+}
+
+article {
+  width: auto;
+  height: auto;
+  margin: 0px 0px;
+  padding: 0px;
+  min-width: 400px;
+  align-items: center; /*記事を中心に配置*/
+  background-color: rgb(0, 0, 0);
+}
+
+section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  background-color: #000000;
+  align-items: center;
+}
+
+/*
+  div .content{
+    width: auto;
+    height: auto;
+    margin: 0px 0px;
+    padding: 0px;
+    min-width: 400px;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+  }
+  */
+
+/*/////PCの画面サイズに対応/////*/
+@media screen and (min-width: 961px) {
+  /*スクロールバーのデザイン設定*/
+  body::-webkit-scrollbar {
+    background: #000;
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: rgba(254, 254, 254, 0.707);
+    border-radius: 20px;
+  }
+
+  h1 {
+    margin: 0px auto;
+    padding: 20px;
+    font-size: 30px;
+    font-family: "Melete", sans-serif;
+    background-color: #ff0e0e00;
+    color: #e6fdff;
+    text-align: left;
+  }
+  h2 {
+    margin: 0px 10px;
+    padding: 10px;
+    font-size: 20px;
+    letter-spacing: 5px;
+    text-align: center;
+  }
+  h3 {
+    margin: 0px 10px;
+    padding: 10px;
+    font-size: 15px;
+    color: rgba(40, 58, 66, 0.959);
+    text-align: center;
+  }
+
+  .manu_container {
+    position: relative;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(0, 0, 0, 0.648);
+  }
+
+  /*矢印設定*/
+  .arrows {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: 0;
+    bottom: 0;
+    padding: 0px;
+    align-content: center;
+    justify-content: center;
+    background-color: #ffe23c00;
+  }
+  .arrows path {
+    stroke: #1a4fff;
+    fill: transparent;
+    stroke-width: 3px;
+    animation: arrow 5s infinite;
+    -webkit-animation: arrow 5s infinite;
+  }
+  @keyframes arrow {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes arrow /*Safari and Chrome*/ {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .arrows path.a1 {
+    animation-delay: -1s;
+    -webkit-animation-delay: -1s; /* Safari 和 Chrome */
+  }
+  .arrows path.a2 {
+    animation-delay: -0.5s;
+    -webkit-animation-delay: -0.5s; /* Safari 和 Chrome */
+  }
+  .arrows path.a3 {
+    animation-delay: 0s;
+    -webkit-animation-delay: 0s; /* Safari 和 Chrome */
+  }
+
+  /* 簡易リセットCSS */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* スライダー全体 */
+  /*
+.vertical-slider {
+    width: 100%;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+}
+*/
+  /* スライド */
+  /*
+.vertical-slider__slide {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e9e9e9f1;
+}
+*/
+
+  /*セクション共通*/
+  div .sec_container {
+    width: 100%;
+    margin: auto;
+    height: auto;
+    background-color: #26ffc900;
+  }
+
+  div .sec_wrapper {
+    width: auto;
+    margin: auto;
+    background-color: #0a0a0000;
+  }
+
+  div .splide {
+    width: 100%;
+    height: auto;
+  }
+
+  /*title共通*/
+  .sec_title {
+    width: 1700px;
+    background-color: #d81f1f00;
+  }
+  .sec_subtitle {
+    width: 1920px;
+    margin: auto;
+    font-size: 24px;
+    background-color: #d81f1f00;
+  }
+
+  /*READ MORE...ボタン共通*/
+  div .More_btn {
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
+  div .More_btn a {
+    width: 300px;
+    height: 80px;
+    margin: auto;
+    padding: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #edfff959;
+    color: #15b8a7bb;
+    background-color: #000a01ab;
+    font-size: 20px;
+    letter-spacing: 2px;
+    transition: all 0.5s;
+  }
+  div .More_btn a:hover {
+    color: #000000;
+    background-color: #2aebebcc;
+  }
+
+  /*QUANTUM BASE*/
+
+  div .sec_1 {
+    background: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0.5047123015873016) 0%,
+      rgba(1, 5, 22, 0.363) 50%,
+      rgba(0, 0, 0, 0.5047123015873016) 100%
+    );
+    box-shadow: inset 0 0 50px 50px rgb(0, 0, 0);
+    opacity: 90%;
+  }
+  div .QB {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+  div .sec_1 .sec_title {
+    margin: auto;
+    text-align: left;
+    padding-top: 100px;
+    padding-left: 100px;
+  }
+
+  div .QB:before {
+    content: "";
+    position: fixed;
+    top: 0; /*fixedの基準位置*/
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh; /*拡大・縮小後もディスプレイ領域の100%に*/
+    background: url("../images/mitamamochi/QUANTUMBASE-1_3.jpg") no-repeat
+      center; /*背景画像設定※オリジナル画像を設定してください*/
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  div .QB_text {
+    position: relative;
+    width: 800px;
+    margin: 20px auto;
+    bottom: -80%;
+    color: #ffffff;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 20px;
+    line-height: 1.7; /*行間*/
+    letter-spacing: 2px;
+    text-align: center; /*文章の揃え*/
+    background-color: #3f09a300;
+  }
+
+  /*Concept of Projectセクション設定*/
+  div .sec_2 {
+    margin: auto;
+    padding-bottom: 50px;
+    background-image: url(../images/mitamamochi/ArcHorizon-s2.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    opacity: 99%;
+  }
+  div .sec_2 .sec_title {
+    margin: auto;
+    text-align: left;
+    padding-top: 40px;
+    padding-left: 100px;
+  }
+  div .Project {
+    background-color: #00000054;
+    padding-bottom: 100px;
+  }
+  div .sec_2_theme {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    padding: 40px;
+    font-size: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 7px;
+    text-align: center;
+    background-color: #ccb32500;
+  }
+  div .symbol {
+    position: relative;
+    width: auto;
+    margin: auto;
+    padding: 30px;
+    background-color: #b0b30700;
+    text-align: center;
+  }
+  div .Pro_text {
+    position: relative;
+    width: 770px;
+    margin: auto;
+    padding: 50px;
+    color: #ffffff;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 20px;
+    line-height: 1.7; /*行間*/
+    letter-spacing: 2px;
+    text-align: center; /*文章の揃え*/
+    background-color: #5117bd00;
+  }
+
+  div .More_btn .Pro_btn {
+    position: relative;
+    margin: auto;
+    display: flex;
+    text-align: center;
+  }
+
+  /*Foumulatorセクション設定*/
+  div .sec_3 {
+    margin: auto;
+    padding-bottom: 50px;
+    background-color: #000;
+    background-image: url(../images/AI/LAB_1.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    opacity: 99%;
+  }
+  div .sec_3 .sec_title {
+    margin: auto;
+    text-align: left;
+    padding-top: 40px;
+    padding-left: 100px;
+  }
+  div .sec_3_theme {
+    position: relative;
+    width: 800px;
+    margin: auto;
+    padding: 5px;
+    top: 20px;
+    left: -450px;
+    font-size: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 7px;
+    text-align: left;
+    background-color: #ccb32500;
+  }
+
+  div .double_container {
+    width: 1700px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 10px;
+    justify-content: space-between;
+    background-color: #15afca00;
+  }
+  div .For_text {
+    position: relative;
+    width: 35%;
+    margin: auto;
+    left: 100px;
+    padding: 20px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 20px;
+    line-height: 1.7; /*行間*/
+    letter-spacing: 2px;
+    text-align: left; /*文章の揃え*/
+    background-color: #7b921300;
+  }
+  div .sign_container {
+    position: relative;
+    width: 60%;
+    height: 700px;
+    margin: 20px;
+    padding: 20px;
+    right: -100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+    background-color: #09a54d00;
+  }
+  div .item {
+    width: 30%;
+    height: 300px;
+    margin: 20px;
+    padding: 5px;
+    background-color: #000000d8;
+    border: 1px #00b193a6 solid;
+    transition: 0.5s;
+  }
+  div .item a {
+    width: 100%;
+    height: auto;
+    color: #00b193a6;
+  }
+  div .item:hover {
+    background-color: #00b193a6;
+    color: #000000d8;
+    transition: 0.5s;
+  }
+  div .item a:hover {
+    color: #000000d8;
+    transition: 0.5s;
+  }
+
+  div .item img {
+    display: block;
+    width: 240px;
+    height: 240px;
+    margin: auto;
+    justify-content: center;
+    opacity: 100%;
+  }
+  div .item .For_Code {
+    position: relative;
+    font-size: 12px;
+    letter-spacing: 0px;
+    font-family: "Melete", sans-serif;
+    text-align: center;
+  }
+  div .More_btn .For_btn {
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    bottom: 200px;
+    left: 300px;
+  }
+
+  /*ここからINFORMATIONの設定*/
+  div .sec_4 {
+    margin: auto;
+    padding-bottom: 100px;
+    background-color: #000000;
+    padding-bottom: 50px;
+    opacity: 99%;
+  }
+
+  div .sec_4 .sec_title {
+    margin: auto;
+    text-align: left;
+    padding-top: 40px;
+    padding-left: 100px;
+  }
+
+  div .info_container {
+    width: 1800px;
+    height: 800px;
+    margin: 20px auto;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a0117c00;
+    justify-content: center;
+  }
+
+  .DiARiS {
+    position: relative;
+    margin: 20px;
+    width: 700px;
+    height: 800px;
+    border-radius: 50%;
+    -webkit-mask-image: radial-gradient(
+      rgb(0, 0, 0) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    mask-image: radial-gradient(rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 70%);
+  }
+
+  div .info_wrapper {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 850px;
+    height: 500px;
+    margin: auto;
+    padding: 20px;
+    top: -100px;
+    background: linear-gradient(
+      0deg,
+      rgba(4, 46, 49, 0.001) 0%,
+      rgba(10, 89, 82, 0.473) 25%,
+      rgba(0, 174, 194, 0.233) 50%,
+      rgba(129, 255, 226, 0.144) 75%,
+      rgba(123, 252, 241, 0) 100%
+    );
+    justify-content: space-around;
+    align-content: space-around;
+  }
+  div .info_wrapper a {
+    color: #ffffff;
+  }
+  div .info_wrapper a:hover {
+    background-color: #7acece;
+    transition: all 0.5s;
+  }
+
+  div .info_article {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 800px;
+    height: 100px;
+    margin: auto;
+    padding: 5px 20px;
+    background-color: #081d1fb3;
+  }
+  .day {
+    display: inline-block;
+    font-size: 30px;
+    width: 100px;
+    margin: auto;
+    padding: 10px;
+    text-align: left;
+    background-color: #00000000;
+  }
+  .year {
+    font-size: 20px;
+  }
+  .ctg {
+    display: inline-block;
+    width: 100px;
+    margin: 5px;
+    padding-left: 0px;
+    font-size: 30px;
+    letter-spacing: 1px;
+    background-color: #69696900;
+  }
+  .info_text {
+    display: inline-block;
+    width: 500px;
+    margin: auto;
+    padding: 10px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.5; /*行間*/
+    letter-spacing: 1px;
+    background-color: #c2c2c200;
+  }
+
+  div .More_btn .info_btn {
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    top: -200px;
+    left: 350px;
+  }
+
+  /*ここからACCESS MAP設定*/
+  div .sec_5 {
+    background-color: #000000;
+    padding-bottom: 50px;
+    opacity: 99%;
+  }
+
+  div .sec_5 .sec_title {
+    margin: auto;
+    text-align: left;
+    padding-top: 40px;
+    padding-left: 100px;
+  }
+
+  div .data_container {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 1800px;
+    height: 1000px;
+    margin: 50px auto;
+    padding: 50px;
+    left: -50px;
+    background-color: #0fac4b00;
+    border-style: solid;
+    border-right: 1px;
+    border-left: 1px;
+    border-color: rgba(93, 94, 102, 0.322);
+  }
+  div .data_wrapper {
+    position: relative;
+    display: block;
+    width: 400px;
+    height: 100%;
+    margin: auto;
+    background-color: #8f020200;
+  }
+  div .data_title {
+    width: auto;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    color: #888888;
+    font-size: 24px;
+    font-family: "Melete", sans-serif;
+    letter-spacing: 1px;
+    background-color: #0aca5a00;
+  }
+  div .data_img {
+    height: 380px;
+    margin: 10px auto;
+    background-color: #86d40a00;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  div .data_img img {
+    width: 400px;
+    height: 400px;
+    transition: all 0.8s;
+    opacity: 50%;
+  }
+  div .data_img img:hover {
+    transform: scale(1.1, 1.1);
+    transition: all 0.8s;
+    opacity: 100%;
+  }
+
+  div .data_text {
+    width: 300px;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 2px;
+    line-height: 1.5; /*行間*/
+    background-color: #01192400;
+  }
+
+  .intro-button p {
+    position: relative;
+    display: inline-block;
+    top: -150px;
+    left: 1200px;
+    margin: 0px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: left;
+    letter-spacing: 2px;
+    background-color: #0eac92a4;
+  }
+  .intro-button a:hover {
+    font-size: 20px;
+    transition: 0.5s;
+    color: #d309c293;
+  }
+  .intro-button .arrows {
+    position: relative;
+    left: 1300px;
+    top: -130px;
+  }
+
+  .section_news_station {
+    position: relative;
+  }
+  .vertical-slider__slide:nth-child(3) div .n-s_title {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 100px auto; /*文字の位置をこれで最終調整*/
+    padding: 20px;
+    top: 100px;
+    letter-spacing: 3px;
+    color: rgba(211, 214, 212, 0.959);
+    background-color: #88181800;
+  }
+
+  .section_theater {
+    position: relative;
+  }
+  .vertical-slider__slide:nth-child(4) .t-title {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 100px auto; /*文字の位置をこれで最終調整*/
+    padding: 20px;
+    top: 100px;
+    letter-spacing: 3px;
+    color: rgba(211, 214, 212, 0.959);
+    background-color: #88181800;
+  }
+
+  .vertical-slider__slide:nth-child(6) {
+    background-color: #0e3a0b;
+  }
+  .vertical-slider__slide:nth-child(7) {
+    background-color: #a5845a;
+  }
+}
+
+/*/////スマートフォン版/////*/
+@media (max-width: 960px) {
+  /*スクロールバーのデザイン設定*/
+  body::-webkit-scrollbar {
+    background: #000;
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: rgba(254, 254, 254, 0.707);
+    border-radius: 20px;
+  }
+
+  h1 {
+    margin: 0px auto;
+    padding: 10px;
+    font-size: 18px;
+    font-family: "Melete", sans-serif;
+    background-color: #ff0e0e00;
+    color: #e6fdff;
+    text-align: left;
+  }
+  h2 {
+    margin: 0px 0px;
+    padding: 10px;
+    font-size: 16px;
+    letter-spacing: 5px;
+    text-align: center;
+  }
+  h3 {
+    margin: 0px 0px;
+    padding: 10px;
+    font-size: 14px;
+    color: rgba(40, 58, 66, 0.959);
+    text-align: center;
+  }
+  div .sec_container {
+    width: 100%;
+    height: auto;
+    background-color: #26ffc900;
+  }
+
+  div .sec_wrapper {
+    width: auto;
+    margin: auto;
+    background-color: #bbbe0900;
+  }
+  .sec_title {
+    width: 100%;
+    background-color: #ee898900;
+  }
+
+  .sec_subtitle {
+    width: 220px;
+    margin: auto;
+    font-size: 24px;
+    background-color: #d81f1f00;
+  }
+
+  .arrows {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: 0;
+    bottom: 30px;
+    padding: 0px;
+    align-content: center;
+    justify-content: center;
+    background-color: #ffe23c00;
+  }
+  .arrows path {
+    stroke: #1a4fff;
+    fill: transparent;
+    stroke-width: 2px;
+    animation: arrow 6s infinite;
+    -webkit-animation: arrow 6s infinite;
+  }
+  @keyframes arrow {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes arrow /*Safari and Chrome*/ {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .arrows path.a1 {
+    animation-delay: -1s;
+    -webkit-animation-delay: -1s; /* Safari 和 Chrome */
+  }
+  .arrows path.a2 {
+    animation-delay: -0.5s;
+    -webkit-animation-delay: -0.5s; /* Safari 和 Chrome */
+  }
+  .arrows path.a3 {
+    animation-delay: 0s;
+    -webkit-animation-delay: 0s; /* Safari 和 Chrome */
+  }
+
+  div .More_btn {
+    position: relative;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+  }
+  div .More_btn a {
+    width: 240px;
+    height: 40px;
+    margin: 10px auto;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #edfff959;
+    color: #15b8a7bb;
+    background-color: #000a01ab;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+  }
+  div .More_btn a:hover {
+    color: #000000;
+    background-color: #2aebebcc;
+  }
+
+  /*QUANTUM BASEセクション設定*/
+  div .sec_1 {
+    background: radial-gradient(
+      circle,
+      rgba(3, 6, 30, 0.815) 25%,
+      rgba(1, 5, 22, 0.473) 75%,
+      rgba(0, 0, 0, 0.267) 100%
+    );
+    box-shadow: inset 0 0 50px 50px rgb(0, 0, 0);
+    opacity: 90%;
+  }
+  div .sec_1 .sec_title {
+    position: relative;
+    padding: 10px;
+    top: -40px;
+  }
+  div .QB {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+  div .QB:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: url("../images/mitamamochi/QUANTUMBASE-1_3.jpg") no-repeat
+      center; /*背景画像設定※オリジナル画像を設定してください*/
+    background-size: cover;
+    /*
+    border-top-right-radius: 700px 500px;
+    border-top-left-radius: 700px 500px;
+    border-bottom-right-radius: 700px 500px;
+    border-bottom-left-radius: 700px 500px;
+    */
+  }
+
+  div .QB_text {
+    position: relative;
+    width: 100px;
+    margin: auto;
+    padding: 20px;
+    color: #ffffff;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 20px;
+    line-height: 1.7; /*行間*/
+    letter-spacing: 2px;
+    text-align: center; /*文章の揃え*/
+    background-color: #16b54800;
+  }
+
+  div .arrows {
+    opacity: 90%;
+  }
+
+  /*PeojectD.A.S.Q.セクション設定*/
+  div .sec_2 {
+    background-image: url(../images/mitamamochi/ArcHorizon-s2.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    opacity: 99%;
+    /*background-attachment:fixed;*/
+    padding-bottom: 30px;
+  }
+  div .sec_2 .sec_title {
+    padding-top: 10px;
+  }
+
+  div .Project {
+    background-color: #0000003a;
+    justify-content: center;
+  }
+  div .sec_2_theme {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 3px;
+    text-align: center;
+    background-color: #ccb32500;
+  }
+  div .symbol {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    margin-top: 0px;
+    background-color: #b0b30700;
+    text-align: center;
+  }
+  div .symbol img {
+    width: 250px;
+    height: auto;
+  }
+  div .Pro_text {
+    position: relative;
+    width: 72%;
+    min-width: 450px;
+    margin: auto;
+    padding: 30px;
+    color: #ffffff;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.4; /*行間*/
+    letter-spacing: 1px;
+    text-align: center; /*文章の揃え*/
+    background-color: #ed1f1f00;
+  }
+
+  /*FOUMULATORセクション設定*/
+  div .sec_3 {
+    background-image: url(../images/AI/LAB_1.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    opacity: 99%;
+    padding-bottom: 30px;
+  }
+  div .sec_3 .sec_title {
+    padding: 10px;
+  }
+  div .sec_3_theme {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+    background-color: #93801400;
+  }
+
+  div .double_container {
+    width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #15afca00;
+  }
+
+  div .For_text {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.4; /*行間*/
+    letter-spacing: 1.1px;
+    background-color: #7b921300;
+    text-align: center; /*文章の揃え*/
+  }
+
+  div .sign_container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 10px;
+    background-color: #033a1b00;
+  }
+
+  div .item {
+    width: 20%;
+    height: auto;
+    margin: 5px;
+    padding: 5px;
+    background-color: #000000d8;
+    border: 1px #00b193a6 solid;
+    transition: 0.5s;
+  }
+
+  div .item a {
+    color: #00b193a6;
+  }
+
+  div .item:hover {
+    background-color: #00b193a6;
+    transition: 0.5s;
+  }
+  div .item a:hover {
+    color: #000000d8;
+    transition: 0.5s;
+  }
+  div .item img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    justify-content: center;
+    opacity: 100%;
+  }
+
+  div .item .For_Code {
+    position: relative;
+    font-size: 10px;
+    letter-spacing: 0px;
+    font-family: "Melete", sans-serif;
+    text-align: left;
+  }
+  div .More_btn .For_btn {
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
+  div .More_btn .For_btn a {
+    width: 140px;
+    height: auto;
+    margin: 10px auto;
+  }
+
+  /*ここからINFORMATIONの設定*/
+  div .sec_4 {
+    margin: auto;
+    z-index: 1;
+    height: 600px;
+    background-color: #000000;
+    padding-bottom: 30px;
+    opacity: 99%;
+  }
+
+  div .sec_4 .sec_title {
+    margin: auto;
+    text-align: left;
+    background-color: #cf1c1c00;
+  }
+
+  div .info_container {
+    width: 550px;
+    margin: 10px auto;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a0117c00;
+  }
+
+  .DiARiS {
+    position: relative;
+    margin: 20px;
+    width: 500px;
+    height: 600px;
+    border-radius: 15%;
+    -webkit-mask-image: radial-gradient(
+      rgba(0, 0, 0, 0.826) 0%,
+      rgba(19, 19, 19, 0) 85%
+    );
+    mask-image: radial-gradient(rgba(0, 0, 0, 0.793) 0%, rgba(0, 0, 0, 0) 85%);
+  }
+
+  div .info_wrapper {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 400px;
+    margin: auto;
+    padding: 10px;
+    top: -600px;
+    background: linear-gradient(
+      0deg,
+      rgba(3, 108, 99, 0) 0%,
+      rgba(129, 255, 226, 0.063) 25%,
+      rgba(2, 45, 50, 0.227) 50%,
+      rgba(0, 68, 62, 0.295) 75%,
+      rgba(0, 29, 31, 0) 100%
+    );
+    align-content: space-around;
+    align-items: center;
+    justify-items: center;
+  }
+
+  div .info_wrapper a {
+    color: #ffffff;
+  }
+  div .info_wrapper a:hover {
+    background-color: #7acece;
+    transition: all 0.5s;
+  }
+
+  div .info_article {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    width: 700px;
+    height: 50px;
+    margin: auto;
+    padding: 5px 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-top: rgb(255, 255, 255);
+    border-right: rgb(255, 255, 255);
+    border-bottom: rgb(255, 255, 255);
+    background-color: #00000067;
+  }
+
+  .day {
+    display: inline-block;
+    font-size: 16px;
+    width: 30px;
+    margin: auto;
+    padding: 10px;
+    text-align: left;
+    background-color: #00000000;
+  }
+  .year {
+    font-size: 14px;
+  }
+  .ctg {
+    display: inline-block;
+    width: 50px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 24px;
+    letter-spacing: 1px;
+    text-align: center;
+    align-items: center;
+    background-color: #93070700;
+  }
+
+  .info_text {
+    display: inline-block;
+    width: 400px;
+    margin: auto;
+    padding: 5px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.2; /*行間*/
+    letter-spacing: 1px;
+    background-color: #990d0d00;
+  }
+
+  div .More_btn .info_btn {
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    top: -570px;
+    background-color: #96212100;
+  }
+  div .More_btn .info_btn a {
+    width: 140px;
+    height: auto;
+    margin: 10px auto;
+  }
+  /*
+  div .info_Profile {
+    position: relative;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  div .info_Profile a {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    top: -600px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #edfff959;
+    color: #0dc1ce;
+    background-color: #000a01ab;
+    font-size: 18px;
+    letter-spacing: 2px;
+    transition: all 0.5s;
+    font-size: 20px;
+    letter-spacing: 2px;
+    transition: all 0.5s;
+  }
+  div .info_Profile a:hover {
+    color: #000000;
+    background-color: #18d1ffdc;
+  }*/
+
+  /*ここからACCESS MAP設定*/
+  div .sec_5 {
+    background-color: #000303ea;
+    padding-bottom: 50px;
+    opacity: 99%;
+  }
+
+  div .sec_5 .sec_title {
+    margin: auto;
+    text-align: left;
+    background-color: #cf1c1c00;
+  }
+
+  div .data_container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 10px auto;
+    padding: 5px;
+    padding-bottom: 150px;
+    background-color: #0000008f;
+    border-style: solid;
+    border-right: 1px;
+    border-left: 1px;
+    border-color: rgba(93, 94, 102, 0.322);
+    justify-content: center;
+  }
+
+  div .data_wrapper {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    margin: auto;
+    padding: 10px;
+    background-color: #98060600;
+  }
+
+  div .data_title {
+    position: relative;
+    display: flex;
+    width: 500px;
+    height: auto;
+    margin: 0px auto;
+    padding: 10px;
+    color: #888888;
+    font-size: 14px;
+    font-family: "Melete", sans-serif;
+    letter-spacing: 1px;
+    /*justify-content: end;*/
+    background-color: #08442100;
+  }
+
+  div .data_img {
+    position: relative;
+    margin: 10px auto;
+    background-color: #86d40a00;
+    text-align: center;
+    overflow: hidden;
+    left: 0px;
+  }
+
+  div .data_img img {
+    width: 200px;
+    height: auto;
+    opacity: 50%;
+    transition: all 0.8s;
+  }
+  div .data_img img:hover {
+    transform: scale(1.2, 1.2);
+    opacity: 100%;
+    transition: all 0.8s;
+  }
+
+  div .data_text {
+    position: relative;
+    display: flex;
+    width: 200px;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    font-size: 14px;
+    letter-spacing: 1.1px;
+    line-height: 1.4; /*行間*/
+    background-color: #01192400;
+  }
+
+  /*-------------------------------------------------------------------------------------*/
+}
